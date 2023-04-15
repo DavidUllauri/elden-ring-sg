@@ -6,13 +6,15 @@ namespace DU
 {
     public class PlayerCamera : MonoBehaviour
     {
-        public static PlayerCamera instance;
+        public static PlayerCamera Instance;
+
+        public Camera cameraObject;
 
         private void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
             }
             else
             {
