@@ -18,6 +18,11 @@ namespace DU
         {
             base.Update();
 
+            if (!IsOwner)
+            {
+                return;
+            }
+
             playerLocomotionManager.HandleAllMovement();
         }
     }
