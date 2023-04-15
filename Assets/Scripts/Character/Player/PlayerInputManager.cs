@@ -56,5 +56,10 @@ namespace DU
 
             playerControls.Enable();
         }
+
+        private void OnDestroy()
+        {
+            SceneManager.activeSceneChanged -= OnSceneChange;
+        }
     }
 }
