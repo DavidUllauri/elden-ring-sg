@@ -17,11 +17,16 @@ namespace DU
         [SerializeField] float upDownLookSpeed = 220;
         [SerializeField] float minimumPivot = -30;
         [SerializeField] float maximumPivot = 60;
+        [SerializeField] float cameraCollisionRadius = 0.2f;
+        [SerializeField] LayerMask collideWithLayers;
 
         [Header("Camera Values")]
         private Vector3 cameraVelocity;
+        private Vector3 cameraObjectPosition;
         [SerializeField] float leftRightLookAngle;
         [SerializeField] float upDownLookAngle;
+        private float cameraZPosition;
+        private float targetCameraZPosition;
 
         private void Awake()
         {
@@ -38,6 +43,7 @@ namespace DU
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
+            cameraZPosition = cameraObject.transform.localPosition.z;
         }
 
         public void HandleAllCameraActions()
@@ -46,7 +52,7 @@ namespace DU
             {
                 HandleFollowTarget();
                 HandleRotations();
-                // Collide with objects
+                HandleCollisions();
             }
         }
 
@@ -76,6 +82,28 @@ namespace DU
             cameraRotation.x = upDownLookAngle;
             targetRotation = Quaternion.Euler(cameraRotation);
             cameraPivotTranform.localRotation = targetRotation;
+        }
+
+        private void HandleCollisions()
+        {
+            targetCameraZPosition = cameraZPosition;
+            RaycastHit hit;
+            Vector3 direction = cameraObject.transform.position - cameraPivotTranform.position;
+            direction.Normalize();
+
+            if (Physics.SphereCast(cameraPivotTranform.position, cameraCollisionRadius, direction, out hit, Mathf.Abs(targetCameraZPosition), collideWithLayers))
+            {
+                float distanceFromHitObject = Vector3.Distance(cameraPivotTranform.position, hit.point);
+                targetCameraZPosition = -(distanceFromHitObject - cameraCollisionRadius);
+            }
+
+            if (Mathf.Abs(targetCameraZPosition) < cameraCollisionRadius)
+            {
+                targetCameraZPosition = -cameraCollisionRadius;
+            }
+
+            cameraObjectPosition.z = Mathf.Lerp(cameraObject.transform.localPosition.z, targetCameraZPosition, 0.2f);
+            cameraObject.transform.localPosition = cameraObjectPosition;
         }
     }
 }
