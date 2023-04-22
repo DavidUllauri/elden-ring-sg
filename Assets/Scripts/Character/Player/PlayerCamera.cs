@@ -9,10 +9,19 @@ namespace DU
         public static PlayerCamera Instance;
         public PlayerManager player;
         public Camera cameraObject;
+        [SerializeField] Transform cameraPivotTranform;
 
         [Header("Camera Settings")]
-        private Vector3 cameraVelocity;
         private float cameraSmoothSpeed = 1.0f;
+        [SerializeField] float leftRightLookSpeed = 220;
+        [SerializeField] float upDownLookSpeed = 220;
+        [SerializeField] float minimumPivot = -30;
+        [SerializeField] float maximumPivot = 60;
+
+        [Header("Camera Values")]
+        private Vector3 cameraVelocity;
+        [SerializeField] float leftRightLookAngle;
+        [SerializeField] float upDownLookAngle;
 
         private void Awake()
         {
@@ -35,16 +44,38 @@ namespace DU
         {
             if (player != null)
             {
-                FollowTarget();
-                // Roate Around the player
+                HandleFollowTarget();
+                HandleRotations();
                 // Collide with objects
             }
         }
 
-        private void FollowTarget()
+        private void HandleFollowTarget()
         {
             Vector3 targetCameraPosition = Vector3.SmoothDamp(transform.position, player.transform.position, ref cameraVelocity, cameraSmoothSpeed * Time.deltaTime);
             transform.position = targetCameraPosition;
+        }
+
+        private void HandleRotations()
+        {
+            // Normal rotations
+            leftRightLookAngle += (PlayerInputManager.Instance.cameraHorizontalInput * leftRightLookSpeed) * Time.deltaTime;
+            upDownLookAngle -= (PlayerInputManager.Instance.cameraVerticalInput * upDownLookSpeed) * Time.deltaTime;
+            upDownLookAngle = Mathf.Clamp(upDownLookAngle, minimumPivot, maximumPivot);
+
+            Vector3 cameraRotation = Vector3.zero;
+            Quaternion targetRotation;
+
+            // Rotate this gameobjects left and right
+            cameraRotation.y = leftRightLookAngle;
+            targetRotation = Quaternion.Euler(cameraRotation);
+            transform.rotation = targetRotation;
+
+            // Rotate this gameobject up and down
+            cameraRotation = Vector3.zero;
+            cameraRotation.x = upDownLookAngle;
+            targetRotation = Quaternion.Euler(cameraRotation);
+            cameraPivotTranform.localRotation = targetRotation;
         }
     }
 }
