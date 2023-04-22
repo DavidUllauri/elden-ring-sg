@@ -25,5 +25,26 @@ namespace DU
 
             playerLocomotionManager.HandleAllMovement();
         }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+            
+            if (IsOwner)
+            {
+                PlayerCamera.Instance.player = this;
+            }
+        }
+
+        protected override void LateUpdate()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            base.LateUpdate();
+
+            PlayerCamera.Instance.HandleAllCameraActions();
+        }
     }
 }

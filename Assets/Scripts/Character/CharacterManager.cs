@@ -42,5 +42,7 @@ namespace DU
                 );
             }
         }
+
+        protected virtual void LateUpdate() { }
     }
 }
