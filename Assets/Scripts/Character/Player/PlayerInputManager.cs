@@ -8,6 +8,8 @@ namespace DU
     public class PlayerInputManager : MonoBehaviour
     {
         public static PlayerInputManager Instance;
+        public PlayerManager player;
+
         PlayerControls playerControls;
 
         [Header("Movement Input")]
@@ -108,6 +110,11 @@ namespace DU
             {
                 moveAmount = 1;
             }
+
+            if (player == null)
+                return;
+
+            player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
         }
 
         private void HandleCameraMovementInput()
