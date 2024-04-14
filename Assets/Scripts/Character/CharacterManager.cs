@@ -10,7 +10,7 @@ namespace DU
         [HideInInspector] public CharacterController characterController;
         [HideInInspector] public Animator animator;
 
-        CharacterNetworkManager characterNetworkManager;
+        [HideInInspector] public CharacterNetworkManager characterNetworkManager;
 
         protected virtual void Awake()
         {
@@ -45,6 +45,9 @@ namespace DU
             }
         }
 
-        protected virtual void LateUpdate() { }
+        protected virtual void LateUpdate()
+        {
+            // It seems like I am missing something here
+        }
     }
 }
