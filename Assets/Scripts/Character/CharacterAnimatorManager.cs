@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 namespace DU
 {
@@ -30,6 +31,9 @@ namespace DU
             character.isPerformingAction = isPerformingAction;
             character.canRotate = canRotate;
             character.canMove = canMove;
+
+            // Tell the server/host we played an animation, and to play that animation for everybody else present
+            character.characterNetworkManager.NotifyTheServerOfActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
         }
     }
 }
