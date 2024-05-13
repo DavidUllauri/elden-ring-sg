@@ -18,6 +18,7 @@ namespace DU
         private Vector3 targetRotationDirection;
         [SerializeField]public float walkingSpeed = 2;
         [SerializeField] public float runningSpeed = 5;
+        [SerializeField] public float sprintingSpeed = 6.5f;
         [SerializeField] public float rotationSpeed = 5;
 
         [Header("Dodge")]
@@ -46,7 +47,7 @@ namespace DU
                 horizontalMovement = player.characterNetworkManager.horizontalMovement.Value;
                 moveAmount = player.characterNetworkManager.moveAmount.Value;
 
-                player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
+                player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.playerNetworkManager.isSprinting.Value);
             }
         }
 
@@ -78,13 +79,20 @@ namespace DU
             moveDirection.Normalize();
             moveDirection.y = 0;
 
-            if (PlayerInputManager.Instance.moveAmount > 0.5f) // Move at running speed
+            if (player.playerNetworkManager.isSprinting.Value)
             {
-                player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+                player.characterController.Move(moveDirection * sprintingSpeed * Time.deltaTime);
             }
-            else if (PlayerInputManager.Instance.moveAmount <= 0.5f) // Move at walking speed
+            else
             {
-                player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+                if (PlayerInputManager.Instance.moveAmount > 0.5f) // Move at running speed
+                {
+                    player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+                }
+                else if (PlayerInputManager.Instance.moveAmount <= 0.5f) // Move at walking speed
+                {
+                    player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+                }
             }
         }
 
@@ -107,6 +115,25 @@ namespace DU
             Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
             Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
             transform.rotation = targetRotation;
+        }
+
+        public void HandleSprinting()
+        {
+            if (player.isPerformingAction)
+            {
+                player.playerNetworkManager.isSprinting.Value = false;
+            }
+
+            // if we are out of stamina, set sprinting to false
+
+            if (moveAmount >= 0.5)
+            {
+                player.playerNetworkManager.isSprinting.Value = true;
+            }
+            else
+            {
+                player.playerNetworkManager.isSprinting.Value = false;
+            }
         }
 
         public void AttemptToPerformDodge()
