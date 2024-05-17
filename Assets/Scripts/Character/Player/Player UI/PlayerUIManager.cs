@@ -12,6 +12,8 @@ namespace DU
         [Header("NETWORK JOIN")]
         [SerializeField] bool startGameAsClient;
 
+        public PlayerUIHudManager playerUIHudManager;
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -22,6 +24,8 @@ namespace DU
             {
                 Instance = this;
             }
+
+            playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>();
         }
 
         private void Start()
