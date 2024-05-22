@@ -35,6 +35,17 @@ namespace DU
             playerStatsManager.RegenerateStamina();
         }
 
+        protected override void LateUpdate()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            base.LateUpdate();
+
+            PlayerCamera.Instance.HandleAllCameraActions();
+        }
+
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
@@ -54,15 +65,19 @@ namespace DU
             }
         }
 
-        protected override void LateUpdate()
+        public void SaveGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData)
         {
-            if (!IsOwner)
-            {
-                return;
-            }
-            base.LateUpdate();
+            currentCharacterData.characterName = playerNetworkManager.characterName.Value.ToString();
+            currentCharacterData.xPosition = transform.position.x;
+            currentCharacterData.yPosition = transform.position.y;
+            currentCharacterData.zPosition = transform.position.z;
+        }
 
-            PlayerCamera.Instance.HandleAllCameraActions();
+        public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData)
+        {
+            playerNetworkManager.characterName.Value = currentCharacterData.characterName;
+            Vector3 myPosition = new (currentCharacterData.xPosition, currentCharacterData.yPosition, currentCharacterData.zPosition);
+            transform.position = myPosition;
         }
     }
 }
