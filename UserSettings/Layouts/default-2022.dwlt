@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 56
+  controlID: 57
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 144
+  controlID: 161
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -119,8 +119,8 @@ MonoBehaviour:
     y: 0
     width: 648
     height: 1347
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -519,7 +519,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Menu Scene
+    - Assets/Data/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -527,16 +527,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Menu Scene
+  - Assets/Data/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\dav\Dev\unity-workspace\elden-ring-sg
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: cc740000
-    m_LastClickedID: 29900
-    m_ExpandedIDs: 000000009e740000a0740000a2740000a4740000a6740000a8740000aa740000ac740000ca74000000ca9a3b
+    m_SelectedIDs: 1e750000
+    m_LastClickedID: 29982
+    m_ExpandedIDs: 00000000fa740000fc740000fe740000007500000275000004750000067500000875000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -564,7 +564,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009e740000a0740000a2740000a4740000a6740000a8740000aa740000ac740000
+    m_ExpandedIDs: 00000000fa740000fc740000fe7400000075000002750000047500000675000008750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -656,7 +656,7 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: ui_cha
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -668,7 +668,7 @@ MonoBehaviour:
     m_Folders:
     - Assets/Scripts/World Managers
     m_Globs: []
-    m_OriginalText: 
+    m_OriginalText: ui_cha
     m_ImportLogFlags: 0
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
@@ -681,9 +681,9 @@ MonoBehaviour:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ce740000
-    m_LastClickedID: 29902
-    m_ExpandedIDs: 000000009e740000a0740000a2740000a4740000a6740000a8740000aa740000ac740000ca74000000ca9a3b
+    m_SelectedIDs: 2c750000
+    m_LastClickedID: 29996
+    m_ExpandedIDs: 00000000fa740000fc740000fe740000007500000275000004750000067500000875000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -711,7 +711,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009e740000a0740000a2740000a4740000a6740000a8740000aa740000ac740000
+    m_ExpandedIDs: 00000000fa740000fc740000fe7400000075000002750000047500000675000008750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -736,9 +736,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 06fbffff
-    m_LastClickedInstanceID: -1274
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 9a700000
+    m_LastClickedInstanceID: 28826
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000d8770000d4770000b2750000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -855,7 +855,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1cfbfffff4ffffff
+      m_ExpandedIDs: dc7bffffcaeeffffc6efffff2afbfffff4ffffff827000008e7000009a700000a2700000ea700000f2700000fe70000018710000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1223,9 +1223,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 538, y: 270.5, z: 0}
+    m_Target: {x: 716.30206, y: 375.8021, z: 2.9907453}
     speed: 2
-    m_Value: {x: 538, y: 270.5, z: 0}
+    m_Value: {x: 716.30206, y: 375.8021, z: 2.9907453}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1275,9 +1275,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 602.1746
+    m_Target: 511.44034
     speed: 2
-    m_Value: 602.1746
+    m_Value: 511.44034
   m_Ortho:
     m_Target: 1
     speed: 2
