@@ -8,6 +8,8 @@ namespace DU
 {
     public class TitleScreenManager : MonoBehaviour
     {
+        public static TitleScreenManager Instance;
+
         [Header("Menus")]
         [SerializeField] GameObject titleScreenMainMenu;
         [SerializeField] GameObject titleScreenLoadMenu;
@@ -15,6 +17,23 @@ namespace DU
         [Header("Buttons")]
         [SerializeField] Button loadMenuReturnButton;
         [SerializeField] Button mainMenuLoadGameButton;
+        [SerializeField] Button mainMenuNewGameButton;
+
+        [Header("Pop Ups")]
+        [SerializeField] GameObject noCharacterSlotsPopUp;
+        [SerializeField] Button noCharacterSlotsOkayButton;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         public void StartNetworkAsHost()
         {
@@ -23,8 +42,7 @@ namespace DU
 
         public void StartNewGame()
         {
-            WorldSaveGameManager.Instance.CreateNewGame();
-            StartCoroutine(WorldSaveGameManager.Instance.LoadWorldScene());
+            WorldSaveGameManager.Instance.AttemptToCreateNewGame();
         }
 
         public void OpenLoadGameMenu()
@@ -37,11 +55,23 @@ namespace DU
         }
         public void CloseLoadGameMenu()
         {
-            titleScreenMainMenu.SetActive(true);
             titleScreenLoadMenu.SetActive(false);
+            titleScreenMainMenu.SetActive(true);
 
             // Focus on load game button
             mainMenuLoadGameButton.Select();
+        }
+
+        public void DisplayNoFreeCharacterSlotsPopUp()
+        {
+            noCharacterSlotsPopUp.SetActive(true);
+            noCharacterSlotsOkayButton.Select();
+        }
+
+        public void CloseNoFreeCharaterSlotsPopUp()
+        {
+            noCharacterSlotsPopUp.SetActive(false);
+            mainMenuNewGameButton.Select();
         }
     }
 }

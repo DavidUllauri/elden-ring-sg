@@ -54,7 +54,7 @@ namespace DU
             {
                 PlayerCamera.Instance.player = this;
                 PlayerInputManager.Instance.player = this;
-
+                WorldSaveGameManager.Instance.player = this;
 
                 playerNetworkManager.currentStamina.OnValueChanged += PlayerUIManager.Instance.playerUIHudManager.SetNewStaminaValue;
                 playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaRegenTimer;
