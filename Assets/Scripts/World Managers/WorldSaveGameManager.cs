@@ -124,8 +124,8 @@ namespace DU
                 StartCoroutine(LoadWorldScene());
                 return;
             }
-            /*
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_03);
+
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_03);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -135,7 +135,7 @@ namespace DU
                 return;
             }
 
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_04);
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_04);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -145,7 +145,7 @@ namespace DU
                 return;
             }
 
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_05);
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_05);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -155,7 +155,7 @@ namespace DU
                 return;
             }
 
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_06);
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_06);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -166,7 +166,7 @@ namespace DU
             }
 
 
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_07);
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_07);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -176,7 +176,7 @@ namespace DU
                 return;
             }
 
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_08);
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_08);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -186,7 +186,7 @@ namespace DU
                 return;
             }
 
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_09);
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_09);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -196,7 +196,7 @@ namespace DU
                 return;
             }
 
-            saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_10);
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(CharacterSlot.CharacterSlot_10);
 
             if (!saveFileDataWriter.FileExists())
             {
@@ -205,7 +205,6 @@ namespace DU
                 StartCoroutine(LoadWorldScene());
                 return;
             }
-            */
 
             TitleScreenManager.Instance.DisplayNoFreeCharacterSlotsPopUp();
 
@@ -236,7 +235,16 @@ namespace DU
             player.SaveGameDataToCurrentCharacterData(ref currentCharacterData);
 
             saveFileDataWriter.CreateNewCharacterSaveFile(currentCharacterData);
-        }    
+        }
+
+        public void DeleteGame(CharacterSlot characterSlot)
+        {
+            saveFileDataWriter = new SaveFileDataWriter();
+            saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+            saveFileDataWriter.saveFileName = DecideCharacterFileName(characterSlot);
+
+            saveFileDataWriter.DeleteSaveFile();
+        }
 
         private void LoadAllCharacterProfiles()
         {
