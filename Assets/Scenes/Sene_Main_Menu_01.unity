@@ -819,8 +819,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -141.72076}
-  m_SizeDelta: {x: 0, y: 283.4415}
+  m_AnchoredPosition: {x: 0, y: -463.75583}
+  m_SizeDelta: {x: 0, y: 927.5117}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290458370
 MonoBehaviour:
@@ -1895,6 +1895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 780895239}
   - component: {fileID: 780895240}
+  - component: {fileID: 780895241}
   m_Layer: 5
   m_Name: Load Character Scroll React
   m_TagString: Untagged
@@ -1936,9 +1937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 290458369}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -1953,6 +1954,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &780895241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780895238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31493487a4442854e80bec7559c0c63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSelected: {fileID: 0}
+  previouslySelected: {fileID: 0}
+  currentSelectedTransform: {fileID: 0}
+  contentPanel: {fileID: 290458369}
+  scrollRect: {fileID: 780895240}
 --- !u!1 &786615749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,6 +3941,7 @@ GameObject:
   - component: {fileID: 1801605039}
   - component: {fileID: 1801605041}
   - component: {fileID: 1801605040}
+  - component: {fileID: 1801605042}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -3988,6 +4007,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801605038}
   m_CullTransparentMesh: 1
+--- !u!114 &1801605042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801605038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1839467955
 GameObject:
   m_ObjectHideFlags: 0
