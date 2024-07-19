@@ -35,13 +35,12 @@ namespace DU
             playerStatsManager.RegenerateStamina();
         }
 
-        protected override void LateUpdate()
+        protected void LateUpdate()
         {
             if (!IsOwner)
             {
                 return;
             }
-            base.LateUpdate();
 
             PlayerCamera.Instance.HandleAllCameraActions();
         }

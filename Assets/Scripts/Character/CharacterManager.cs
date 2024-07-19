@@ -14,6 +14,8 @@ namespace DU
 
         [Header("Flags")]
         public bool isPerformingAction = false;
+        public bool isJumping = false;
+        public bool isGrounded = true;
         public bool applyRootMotion = false;
         public bool canRotate = true;
         public bool canMove = true;
@@ -29,6 +31,8 @@ namespace DU
 
         protected virtual void Update()
         {
+            animator.SetBool("isGrounded", isGrounded);
+
             if (IsOwner)
             {
                 characterNetworkManager.networkPosition.Value = transform.position;
@@ -51,9 +55,5 @@ namespace DU
             }
         }
 
-        protected virtual void LateUpdate()
-        {
-            // It seems like I am missing something here
-        }
     }
 }

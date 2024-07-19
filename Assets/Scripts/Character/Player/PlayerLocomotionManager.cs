@@ -25,6 +25,7 @@ namespace DU
         [Header("Dodge")]
         private Vector3 rollDirection;
         [SerializeField] float dodgeStaminaCost = 25;
+        [SerializeField] float jumpStaminaCost = 25;
 
         protected override void Awake()
         {
@@ -174,6 +175,32 @@ namespace DU
             }
 
             player.playerNetworkManager.currentStamina.Value -= dodgeStaminaCost;
+        }
+
+        public void AttemptToPerformJump()
+        {
+            if (player.isPerformingAction)
+                return;
+
+            if (player.playerNetworkManager.currentStamina.Value <= 0)
+                return;
+
+            if (player.isJumping)
+                return;
+
+            if (player.isGrounded)
+                return;
+
+            player.playerAnimatorManager.PlayTargetActionAnimation("Main_Jump_01", false);
+
+            player.isJumping = true;
+
+            player.playerNetworkManager.currentStamina.Value -= jumpStaminaCost;
+        }
+
+        public void ApplyJumpingVelocity()
+        {
+            
         }
     }
 }
