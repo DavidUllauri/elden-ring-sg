@@ -105,6 +105,7 @@ namespace DU
             HandleCameraMovementInput();
             HandleDodgeInput();
             HandleSprintingInput();
+            HandleJumpInput();
         }
 
         // Movement
