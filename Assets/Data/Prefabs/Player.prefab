@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: -1484821173650829764}
   - component: {fileID: -8914707883510038724}
   - component: {fileID: -8066929908696878954}
+  - component: {fileID: -3211092295664066017}
   - component: {fileID: 7337741808929896778}
   - component: {fileID: 117670242770726853}
   m_Layer: 6
@@ -669,6 +670,8 @@ MonoBehaviour:
   sprintingStaminaCost: 2
   jumpStaminaCost: 25
   jumpHeight: 4
+  jumpForwardSpeed: 5
+  freeFallSpeed: 2
   dodgeStaminaCost: 25
 --- !u!114 &-8914707883510038724
 MonoBehaviour:
@@ -694,6 +697,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191d2866c9dfccd44a52a8608947d559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3211092295664066017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695696483362287619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d55927fba2d9b946a47e7ccdaae1a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectToTest: {fileID: 11400000, guid: d810abf2e051f3d4d914e5144b7aa81a, type: 2}
+  processEffect: 0
 --- !u!143 &7337741808929896778
 CharacterController:
   m_ObjectHideFlags: 0
