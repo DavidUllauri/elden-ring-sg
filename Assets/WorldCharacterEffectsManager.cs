@@ -8,6 +8,9 @@ namespace DU
     {
         public static WorldCharacterEffectsManager Instance;
 
+        [Header("Damage")]
+        public TakeHealthDamageEffect takeHealthDamageEffect;
+
         [SerializeField] List<InstantCharacterEffect> instantEffects;
 
         private void Awake()
