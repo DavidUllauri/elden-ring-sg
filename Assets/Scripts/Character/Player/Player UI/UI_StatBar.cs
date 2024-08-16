@@ -8,10 +8,16 @@ namespace DU
     public class UI_StatBar : MonoBehaviour
     {
         private Slider slider;
+        private RectTransform rectTransform;
+
+        [Header("Bar Options")]
+        [SerializeField] protected bool scaleBarLengthWidthStats = true;
+        [SerializeField] protected float widthScaleMultiplier = 1;
 
         protected virtual void Awake()
         {
             slider = GetComponent<Slider>();
+            rectTransform = GetComponent<RectTransform>();
         }
 
         public virtual void SetStat(int newValue)
@@ -23,6 +29,12 @@ namespace DU
         {
             slider.maxValue = maxValue;
             slider.value = maxValue;
+
+            if (scaleBarLengthWidthStats)
+            {
+                rectTransform.sizeDelta = new Vector2(maxValue * widthScaleMultiplier, rectTransform.sizeDelta.y);
+                PlayerUIManager.Instance.playerUIHudManager.RefreshHUD();
+            }
         }
     }
 }
