@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using System;
 
 namespace DU
 {
@@ -26,7 +27,7 @@ namespace DU
 
         
         [Header("Resources")]
-        public NetworkVariable<float> currentHealth = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+        public NetworkVariable<int> currentHealth = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         public NetworkVariable<int> maxHealth = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         public NetworkVariable<float> currentStamina = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         public NetworkVariable<int> maxStamina = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -39,6 +40,19 @@ namespace DU
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();
+        }
+
+        public void CheckHP(int oldValue, int newValue)
+        {
+            if (currentHealth.Value <= 0)
+            {
+                StartCoroutine(character.ProcessDeathEvent());
+            }
+
+            if (character.IsOwner)
+            {
+                currentHealth.Value = Math.Min(maxHealth.Value, currentHealth.Value);
+            }
         }
 
         [ServerRpc]

@@ -13,6 +13,7 @@ namespace DU
         [SerializeField] bool startGameAsClient;
 
         public PlayerUIHudManager playerUIHudManager;
+        public PlayerUIPopUpManager playerUIPopUpManager;
 
         private void Awake()
         {
@@ -26,6 +27,7 @@ namespace DU
             }
 
             playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>();
+            playerUIPopUpManager = GetComponentInChildren<PlayerUIPopUpManager>();
         }
 
         private void Start()
