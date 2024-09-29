@@ -60,7 +60,10 @@ namespace DU
 
         protected void OnDrawGizmosSelected()
         {
-            Gizmos.DrawSphere(character.transform.position, groundCheckSphereRadius);
+            if (character)
+            {
+                Gizmos.DrawSphere(character.transform.position, groundCheckSphereRadius);
+            }
         }
     }
 }
