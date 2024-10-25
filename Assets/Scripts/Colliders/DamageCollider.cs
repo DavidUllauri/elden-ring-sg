@@ -6,6 +6,9 @@ namespace DU
 {
     public class DamageCollider : MonoBehaviour
     {
+        [Header("Collider")]
+        protected Collider damageCollider;
+
         [Header("Damage")]
         public float physicalDamage = 0; // In the future will be split into "Standard", "Strike", "Slash", and "Pierce
         public float magicDamage = 0;
@@ -48,6 +51,17 @@ namespace DU
             healthDamageEffect.contactPoint = contactPoint;
 
             damageTarget.characterEffectsManager.ProcessInstantEffects(healthDamageEffect);
+        }
+
+        public virtual void EnableDamageCollider()
+        {
+            damageCollider.enabled = true;
+        }
+
+        public virtual void DisableDamageCollider()
+        {
+            damageCollider.enabled = false;
+            charactersDamaged.Clear();
         }
     }
 }
