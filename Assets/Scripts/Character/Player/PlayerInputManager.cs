@@ -47,6 +47,11 @@ namespace DU
             SceneManager.activeSceneChanged += OnSceneChange;
 
             Instance.enabled = false;
+
+            if (playerControls != null)
+            {
+                playerControls.Disable();
+            }
         }
 
         private void OnSceneChange(Scene oldScene, Scene newScene)
@@ -54,10 +59,20 @@ namespace DU
             if (newScene.buildIndex == WorldSaveGameManager.Instance.GetWorldSceneIndex())
             {
                 Instance.enabled = true;
+
+                if (playerControls != null)
+                {
+                    playerControls.Enable();
+                }
             }
             else
             {
                 Instance.enabled = false;
+
+                if (playerControls != null)
+                {
+                    playerControls.Disable();
+                }
             }
         }
 

@@ -79,6 +79,11 @@ namespace DU
             // Equipment
             playerNetworkManager.currentRightHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentRightHandWeaponIDChange;
             playerNetworkManager.currentLeftHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentLeftHandWeaponIDChange;
+
+            if (IsOwner && !IsServer)
+            {
+                LoadGameDataFromCurrentCharacterData(ref WorldSaveGameManager.Instance.currentCharacterData);
+            }
         }
 
         public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
