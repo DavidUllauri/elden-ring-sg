@@ -29,3 +29,4 @@ MonoBehaviour:
   lightningDamage: 0
   poiseDamage: 25
   baseSTaminaCost: 20
+  oh_RB_Action: {fileID: 11400000, guid: 0c3b079508b2f6541883f17fed7c901f, type: 2}

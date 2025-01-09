@@ -27,6 +27,7 @@ namespace DU
         [SerializeField] bool dodgeInput = false;
         [SerializeField] bool sprintInput = false;
         [SerializeField] bool jumpInput = false;
+        [SerializeField] bool RB_Input = false;
 
         private void Awake()
         {
@@ -86,6 +87,7 @@ namespace DU
                 playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
                 playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
                 playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
+                playerControls.PlayerActions.RB.performed += i => RB_Input = true;
 
                 playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
                 playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
@@ -121,6 +123,7 @@ namespace DU
             HandleDodgeInput();
             HandleSprintingInput();
             HandleJumpInput();
+            HandleRBInput();
         }
 
         // Movement
@@ -186,6 +189,18 @@ namespace DU
                 jumpInput = false;
 
                 player.playerLocomotionManager.AttemptToPerformJump();
+            }
+        }
+
+        private void HandleRBInput()
+        {
+            if (RB_Input)
+            {
+                RB_Input = false;
+
+                player.playerNetworkManager.SetCharacterActionHand(true);
+
+                player.playerCombatManager.PerformWeaponBaseAction(player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action, player.playerInventoryManager.currentRightHandWeapon);
             }
         }
     }

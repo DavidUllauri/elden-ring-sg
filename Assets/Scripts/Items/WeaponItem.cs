@@ -27,5 +27,8 @@ namespace DU
 
         [Header("Stamina Costs")]
         public int baseSTaminaCost = 20;
+
+        [Header("Actions")]
+        public WeaponItemAction oh_RB_Action; // One Hand Right Bumper Action
     }
 }
