@@ -9,7 +9,7 @@ namespace DU
     {
         public int actionID;
 
-        public virtual void AttmeptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
+        public virtual void AttemptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
         {
             if (playerPerformingAction.IsOwner)
             {
