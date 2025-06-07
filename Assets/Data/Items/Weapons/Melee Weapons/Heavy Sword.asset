@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: BroadSword
   itemIcon: {fileID: 21300000, guid: 00023ce5bf4e8f34ea00005225943f96, type: 3}
   itemDescription: A straight sword
-  itemID: 0
+  itemID: 3
   weaponModel: {fileID: 8359561237158814720, guid: 2806c61e9ecc9c74fab90865bbdfa0db,
     type: 3}
   strengthREQ: 10
@@ -28,4 +28,7 @@ MonoBehaviour:
   holyDamage: 0
   lightningDamage: 0
   poiseDamage: 25
-  baseSTaminaCost: 20
+  light_Attack_01_Modifier: 1.1
+  baseStaminaCost: 20
+  lightAttackStaminaCostMultiplier: 0.9
+  oh_RB_Action: {fileID: 11400000, guid: 13f9689c45860d045b1e7ffc213ea980, type: 2}

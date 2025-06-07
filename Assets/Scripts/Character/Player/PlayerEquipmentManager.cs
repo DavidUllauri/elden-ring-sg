@@ -141,6 +141,11 @@ namespace DU
 
         // Left Weapon
 
+        public void SwitchLeftWeapon()
+        {
+
+        }
+
         public void LoadLeftWeapon()
         {
             if (player.playerInventoryManager.currentLeftHandWeapon != null)
@@ -153,8 +158,34 @@ namespace DU
             }
         }
 
-        public void SwitchLeftWeapon()
+        // Damage Colliders
+
+        public void OpenDamageCollider()
         {
+            // Open right weapon damage collider
+            if (player.playerNetworkManager.isUsingRightHand.Value)
+            {
+                rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
+            }
+            // Open left weapon damage collider
+            else if (player.playerNetworkManager.isUsingLeftHand.Value)
+            {
+                leftWeaponManager.meleeDamageCollider.EnableDamageCollider();
+            }
+        }
+
+        public void CloseDamageCollider()
+        {
+            // Open right weapon damage collider
+            if (player.playerNetworkManager.isUsingRightHand.Value)
+            {
+                rightWeaponManager.meleeDamageCollider.DisableDamageCollider();
+            }
+            // Open left weapon damage collider
+            else if (player.playerNetworkManager.isUsingLeftHand.Value)
+            {
+                leftWeaponManager.meleeDamageCollider.DisableDamageCollider();
+            }
         }
     }
 }

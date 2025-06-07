@@ -27,5 +27,28 @@ namespace DU
                 player.playerNetworkManager.NotifyServerOfWeaponActionServerRpc(NetworkManager.Singleton.LocalClientId, weaponAction.actionID, weaponPerformingAction.itemID);
             }
         }
+
+        public virtual void DrainStaminaBasedOnAttack()
+        {
+            if (!player.IsOwner)
+                return;
+
+            if (currentWeaponBeingUsed == null)
+                return;
+
+            float staminaDeducted = 0;
+
+            switch (currentAttackType)
+            {
+                case AttackType.LightAttack01:
+                    staminaDeducted = currentWeaponBeingUsed.baseStaminaCost * currentWeaponBeingUsed.lightAttackStaminaCostMultiplier;
+                    break;
+                default:
+                    break;
+            }
+
+            Debug.Log("Stamina Deducted: " + staminaDeducted);
+            player.playerNetworkManager.currentStamina.Value -= Mathf.RoundToInt(staminaDeducted);
+        }
     }
 }

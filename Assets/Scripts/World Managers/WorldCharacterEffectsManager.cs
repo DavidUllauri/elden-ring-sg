@@ -9,7 +9,7 @@ namespace DU
         public static WorldCharacterEffectsManager Instance;
 
         [Header("Damage")]
-        public TakeHealthDamageEffect takeHealthDamageEffect;
+        public TakeDamageEffect takeDamageEffect;
 
         [SerializeField] List<InstantCharacterEffect> instantEffects;
 
@@ -23,6 +23,8 @@ namespace DU
             {
                 Destroy(gameObject);
             }
+
+            GenerateEffectIDs();
         }
 
         private void GenerateEffectIDs()

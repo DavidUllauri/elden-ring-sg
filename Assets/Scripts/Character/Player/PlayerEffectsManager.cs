@@ -16,7 +16,7 @@ namespace DU
             {
                 processEffect = false;
                 InstantCharacterEffect effect = Instantiate(effectToTest);
-                ProcessInstantEffects(effect);
+                ProcessInstantEffect(effect);
             }
         }
     }

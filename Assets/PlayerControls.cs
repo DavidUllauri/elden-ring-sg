@@ -310,6 +310,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8adb6561-2fd0-451a-9938-2115d4a62202"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""66d412a6-054a-4337-8e8c-b558843a4d2a"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",

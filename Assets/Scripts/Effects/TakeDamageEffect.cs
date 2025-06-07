@@ -6,7 +6,7 @@ namespace DU
 {
     [CreateAssetMenu(menuName = "Character Effects/Instant Effects/Take Health Damage")]
 
-    public class TakeHealthDamageEffect : InstantCharacterEffect
+    public class TakeDamageEffect : InstantCharacterEffect
     {
         [Header("Character Causing Damage")]
         public CharacterManager characterCausingDamage;
@@ -53,9 +53,7 @@ namespace DU
         private void CalculateDamage(CharacterManager character)
         {
             if(!character.IsOwner)
-            {
                 return;
-            }
             
             if (characterCausingDamage != null)
             {

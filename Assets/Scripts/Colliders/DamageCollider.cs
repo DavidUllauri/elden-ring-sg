@@ -7,7 +7,7 @@ namespace DU
     public class DamageCollider : MonoBehaviour
     {
         [Header("Collider")]
-        protected Collider damageCollider;
+        [SerializeField] protected Collider damageCollider;
 
         [Header("Damage")]
         public float physicalDamage = 0; // In the future will be split into "Standard", "Strike", "Slash", and "Pierce
@@ -17,12 +17,17 @@ namespace DU
         public float holyDamage = 0;
 
         [Header("Contact Point")]
-        private Vector3 contactPoint;
+        protected Vector3 contactPoint;
 
         [Header("Characters Damaged")]
         protected List<CharacterManager> charactersDamaged = new List<CharacterManager>();
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void Awake()
+        {
+
+        }
+
+        protected virtual void OnTriggerEnter(Collider other)
         {
             CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
 
@@ -43,14 +48,14 @@ namespace DU
 
             charactersDamaged.Add(damageTarget);
 
-            TakeHealthDamageEffect healthDamageEffect = Instantiate(WorldCharacterEffectsManager.Instance.takeHealthDamageEffect);
+            TakeDamageEffect healthDamageEffect = Instantiate(WorldCharacterEffectsManager.Instance.takeDamageEffect);
             healthDamageEffect.physicalDamage = physicalDamage;
             healthDamageEffect.magicDamage = magicDamage;
             healthDamageEffect.fireDamage = fireDamage;
             healthDamageEffect.holyDamage = holyDamage;
             healthDamageEffect.contactPoint = contactPoint;
 
-            damageTarget.characterEffectsManager.ProcessInstantEffects(healthDamageEffect);
+            damageTarget.characterEffectsManager.ProcessInstantEffect(healthDamageEffect);
         }
 
         public virtual void EnableDamageCollider()

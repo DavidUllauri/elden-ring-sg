@@ -14,7 +14,7 @@ namespace DU
         }
 
         // Process Instant Effects
-        public virtual void ProcessInstantEffects(InstantCharacterEffect effect)
+        public virtual void ProcessInstantEffect(InstantCharacterEffect effect)
         {
             effect.ProcessEffect(character);
         }

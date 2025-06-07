@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5606,9 +5606,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1288328351315387467, guid: 7bf1ec63d9fe6bf46816ef418bc91eeb,
         type: 3}
+      propertyPath: weapons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288328351315387467, guid: 7bf1ec63d9fe6bf46816ef418bc91eeb,
+        type: 3}
       propertyPath: weapons.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: a253f584fd66add44b04b49e6001bd7b,
+        type: 2}
+    - target: {fileID: 1288328351315387467, guid: 7bf1ec63d9fe6bf46816ef418bc91eeb,
+        type: 3}
+      propertyPath: weapons.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5830fb64064852d4e89cd4c46560f106,
         type: 2}
     - target: {fileID: 6108421658291726544, guid: 7bf1ec63d9fe6bf46816ef418bc91eeb,
         type: 3}
@@ -5850,6 +5861,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8406691627472364532, guid: 88eed1ec333c8444bb05905618c04c03,
+        type: 3}
+      propertyPath: weaponItemActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406691627472364532, guid: 88eed1ec333c8444bb05905618c04c03,
+        type: 3}
+      propertyPath: weaponItemActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13f9689c45860d045b1e7ffc213ea980,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5918,6 +5940,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: World Character Effects Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8319296883594821033, guid: 7ab7d7255f76b134cb789552fcd7ebf8,
+        type: 3}
+      propertyPath: takeDamageEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: 874e39e1a77354040805d1b7837732d1,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
